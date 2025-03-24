@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blinkit</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  </head>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+    *{
+        font-family: "Roboto";
+    }
+    .input-container input:focus{
+        outline: none;
+    }
+  </style>
+</head>
+<body>
+    <div id="app">
+        <!-- Header Section -->
+        <header style="height: 86px; border-bottom: 1px solid rgb(215, 215, 215);" class="d-flex col-lg-12 align-items-center containers">
+            <div style="width: 15%;" class="logo ps-5">
+                <svg width="134" height="30" viewBox="0 0 114 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.3342 7.186C16.2619 7.186 17.9832 7.66644 19.4978 8.62732C21.0262 9.57447 22.2242 10.9197 23.0917 12.663C23.9316 14.3377 24.3516 16.3075 24.3516 18.5724C24.3516 20.7687 23.9316 22.7316 23.0917 24.4612C22.2517 26.1908 21.0675 27.5429 19.5391 28.5175C17.9969 29.5058 16.2619 30 14.3342 30C12.9297 30 11.6078 29.7117 10.3685 29.1352C9.12927 28.5587 8.06901 27.7488 7.18775 26.7056V29.4852H0V0H7.18775V10.4598C8.06901 9.41661 9.12927 8.61359 10.3685 8.05079C11.6078 7.47426 12.9297 7.186 14.3342 7.186ZM12.1861 24.0494C13.2051 24.0494 14.1139 23.8161 14.9125 23.3493C15.7112 22.8826 16.3377 22.2306 16.7921 21.3933C17.2465 20.5697 17.4737 19.6294 17.4737 18.5724C17.4737 17.5429 17.2465 16.6095 16.7921 15.7721C16.3377 14.9348 15.7112 14.2828 14.9125 13.8161C14.1139 13.3493 13.2051 13.116 12.1861 13.116C11.2223 13.116 10.3617 13.3493 9.60432 13.8161C8.84699 14.269 8.2549 14.9073 7.82804 15.731C7.40118 16.5683 7.18775 17.5154 7.18775 18.5724C7.18775 19.6294 7.40118 20.5765 7.82804 21.4139C8.2549 22.2375 8.84699 22.8826 9.60432 23.3493C10.3617 23.8161 11.2223 24.0494 12.1861 24.0494Z" fill="#F8CB46"></path><path d="M25.3356 29.4852V0H32.5233V29.4852H25.3356Z" fill="#F8CB46"></path><path d="M34.5607 29.4852V7.68016H41.7071V29.4852H34.5607Z" fill="#F8CB46"></path><path d="M57.2319 7.186C58.7603 7.186 60.1372 7.5429 61.3627 8.25669C62.5882 8.95676 63.5521 9.94509 64.2544 11.2217C64.9291 12.512 65.2664 13.9739 65.2664 15.6074V29.4852H58.4092V17.2135C58.4092 16.4173 58.2508 15.7104 57.9341 15.0927C57.6312 14.4612 57.1974 13.9739 56.6329 13.6307C56.0821 13.2876 55.4349 13.116 54.6914 13.116C53.9891 13.116 53.3419 13.2876 52.7498 13.6307C52.1577 13.9602 51.6965 14.4132 51.366 14.9897C51.0218 15.5388 50.8496 16.1839 50.8496 16.9252L50.8083 29.4852H43.6619V7.68016H50.8083V10.1716C51.483 9.23816 52.3849 8.51064 53.5141 7.98902C54.6432 7.45367 55.8824 7.186 57.2319 7.186Z" fill="#F8CB46"></path><path d="M81.0597 17.2135L89.1769 29.4852H81.0597L76.3091 21.7639L74.1198 24.2965V29.4852H66.932V0H74.1198V16.2869L81.0184 7.68016H89.1356L81.0597 17.2135Z" fill="#F8CB46"></path><path d="M34.5569 0.00232667H41.7267V5.59207H34.5569V0.00232667Z" fill="#F8CB46"></path><path d="M90.3176 29.4198V7.61479H97.464V29.4198H90.3176Z" fill="#54B226"></path><path d="M112.575 23.2634L114 27.855C113.353 28.4727 112.534 28.9737 111.542 29.3581C110.564 29.7424 109.607 29.9346 108.671 29.9346C107.322 29.9346 106.117 29.6395 105.057 29.0492C103.996 28.4452 103.17 27.6079 102.578 26.5372C101.986 25.494 101.69 24.2929 101.69 22.9339V13.3183H98.819V7.61479H101.69V0.00241089H108.547V7.61479H113.071V13.3183H108.547V21.6161C108.547 22.3162 108.733 22.8859 109.105 23.3251C109.477 23.7644 109.952 23.984 110.53 23.984C110.943 23.984 111.329 23.9223 111.687 23.7987C112.045 23.6752 112.341 23.4967 112.575 23.2634Z" fill="#54B226"></path><path d="M90.2609 0.00241089H97.4307V5.59215H90.2609V0.00241089Z" fill="#54B226"></path></svg>
+            </div>
+            <div class="location flex-grow-0 p-3">
+                <div class="upper fw-bold">Delivery in 14 minutes</div>
+                <div class="below ">Vadodara, Gujarat, India</div>
+            </div>
+            <div style="background-color: #f8f8f8;" class="rounded-3 ms-3 search-area flex-grow-2 flex-fill">
+                <div class="input-container d-flex align-items-center w-100 ">
+                    <i class='bx bx-search ps-3 fs-4' style='color:#1d1c1c' ></i>
+                    <input style="height: 46px;background:none;" placeholder='Search "panner"' class="ms-1 w-100 border-0" type="text">
+                </div>
+            </div>
+            <div class="login ps-5 pe-5">
+                <a  href="#login" class="fst-normal fs-5 text-decoration-none text-dark-emphasis">Login</a>
+            </div>
+            <div class="my-cart ps-3 ">
+                <a class="btn d-flex justify-content-center align-items-center btn-success p-2 me-4 fw-semibold" href=""><i class='bx bx-cart fs-2 ' style='col-1or:#ffffff'  ></i>My Cart</a>
+            </div>
+        </header>
+        <!-- Hero Section -->
+         <section class="">
+            <div class="pan-corner container">
+                <img class="w-100" src="./Assets/Image/banner.jpg" alt="">
+            </div>
+            <div class="sales-coupon container row col-sm-12  d-flex">
+                <div class="sales-coupon-list ms-3 col-sm-2">
+                    <img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=720/layout-engine/2023-07/pharmacy-WEB.jpg" alt="masthead_web_pharma" width="335.40000000000003" height="195" loading="lazy" style="border-radius: 16px; object-fit: fill; cursor: default;">
+                </div>
+                <div class="sales-coupon-list ms-3 col-sm-2">
+                    <img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=720/layout-engine/2023-07/Pet-Care_WEB.jpg" alt="masthead_web_pet_care" width="335.40000000000003" height="195" loading="lazy" style="border-radius: 16px; object-fit: fill; cursor: default;">
+                </div>
+                <div class="sales-coupon-list ms-3 col-sm-2">
+                    <img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=720/layout-engine/2023-03/babycare-WEB.jpg" alt="masthead_web_baby_care" width="335.40000000000003" height="195" loading="lazy" style="border-radius: 16px; object-fit: fill; cursor: default;">
+                </div>
+            </div>
+            <!-- MultiImage Section -->
+             <div class="multi-img-container container">
+                <div class="multi-grid-container row justify-content-between g-0">
+                    <div width="128" height="188" class="col-auto">
+                        <img src="./Assets/Image/category/paan corner.png" alt="1 - pan-corner" width="128" height="188.23529411764704" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                    </div>
+                    <div width="128" height="188" class="col-auto">
+                        <img src="./Assets/Image/category/Dairy, Bread & Eggs.png" alt="2 - Dairy" width="128" height="188.23529411764704" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                    </div>
+                    <div width="128" height="188" class="col-auto">
+                        <img src="./Assets/Image/category/Fruits & Vegetables.png" alt="3 - Fruits" width="128" height="188.23529411764704" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                    </div>
+                    <div width="128" height="188" class="col-auto">
+                        <img src="./Assets/Image/category/Cold Drinks & Juices.png" alt="4 -Cold-Drinks" width="128" height="188.23529411764704" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                    </div>
+                    <div width="128" height="188" class="col-auto">
+                        <img src="./Assets/Image/category/Snacks & Munchies.png" alt="5 - Snacks" width="128" height="188.23529411764704" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                    </div>
+                    <div width="128" height="188" class="col-auto">
+                        <img src="./Assets/Image/category/Breakfast & Instant Food.png" alt="6 - Breakfast" width="128" height="188.23529411764704" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                    </div>
+                    <div width="128" height="188" class="col-auto">
+                        <img src="./Assets/Image/category/Sweet Tooth.png" alt="7 - Sweet Tooth" width="128" height="188.23529411764704" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                    </div>
+                    <div width="128" height="188" class="col-auto">
+                        <img src="./Assets/Image/category/Bakery & Biscuits.png" alt="8 - Bakery" width="128" height="188.23529411764704" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                    </div>
+                    <div width="128" height="188" class="col-auto">
+                        <img src="./Assets/Image/category/Tea, Coffe & Health Drink.png" alt="9 - Tea,Coffee" width="128" height="188.23529411764704" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                    </div>
+                    <div width="128" height="188" class="col-auto">
+                        <img src="./Assets/Image/category/Atta, Rice & Dal.png" alt="10 - Atta" width="128" height="188.23529411764704" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                    </div>              
+                    <div width="128" height="188" class="col-auto">
+                        <img src="./Assets/Image/category/Masala, Oil & More.png" alt="11 -Masala" width="128" height="188.23529411764704" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                    </div>              
+                    <div width="128" height="188" class="col-auto">
+                        <img src="./Assets/Image/category/Sauces & Spreads.png" alt="12 -sauces" width="128" height="188.23529411764704" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                    </div>              
+                    <div width="128" height="188" class="col-auto">
+                        <img src="./Assets/Image/category/Chicken, Meat & Fish.png" alt="13 -chicken" width="128" height="188.23529411764704" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                    </div>              
+                    <div width="128" height="188" class="col-auto">
+                        <img src="./Assets/Image/category/Organic & Healthy Living.png" alt="14 -Organic" width="128" height="188.23529411764704" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                    </div>              
+                    <div width="128" height="188" class="col-auto">
+                        <img src="./Assets/Image/category/Baby Care.png" alt="15 -Baby care" width="128" height="188.23529411764704" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                    </div>              
+                    <div width="128" height="188" class="col-auto">
+                        <img src="./Assets/Image/category/Pharma & Wellness.png" alt="16 -Pharma wellness" width="128" height="188.23529411764704" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                    </div>              
+                    <div width="128" height="188" class="col-auto">
+                        <img src="./Assets/Image/category/Cleaning Essentials.png" alt="17 -cleaning essential" width="128" height="188.23529411764704" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                    </div>              
+                    <div width="128" height="188" class="col-auto">
+                        <img src="./Assets/Image/category/Home & Office.png" alt="18 -home & office" width="128" height="188.23529411764704" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                    </div>              
+                    <div width="128" height="188" class="col-auto">
+                        <img src="./Assets/Image/category/Personal Care.png" alt="19 -Personal care " width="128" height="188.23529411764704" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                    </div>              
+                    <div width="128" height="188" class="col-auto">
+                        <img src="./Assets/Image/category/Pet Care.png" alt="20 -Pet care" width="128" height="188.23529411764704" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                    </div>              
+                </div>
+             </div>
+         </section>
+         <!-- Dairy -Breads -Eggs  -->
+          <section class="dairy-breads-eggs mt-3">
+            <div class="container col-auto d-flex justify-content-between">
+                <div class="dairy"><h3>Dairy,Bread & Eggs</h3></div>
+                <div class="seeall fs-5 fw-medium text-success">see all</div>
+            </div>
+            <div class="container ">
+                <div style="gap: 10px;" class="row overflow-hidden container flex-nowrap justify-content-between g-0">
+                    <!-- card 1 -->
+                    <div class="card  col-auto" style="height: 18rem; width: 12rem;">
+                        <div class=" mt-3">
+                            <div width="140" height="140" class="d-flex justify-content-center">
+                                <img src="./Assets/Image/sub category/Dairy, Bread & Eggs/Cream & Whitener.webp" alt="Amul Gold Full Cream Fresh Milk" width="140" height="140" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                            </div>
+                        </div>
+                    <div class="">
+                        <div style="height: 25px;" class="product_update">
+                            <div style="width: 70px; border-radius: 4px; border-width: 0px; padding: 0px 4px; background-color: rgb(248, 248, 248); display: flex; justify-content:start; align-items:start; height: 100%;">
+                                <div class="h-100" style=" align-items: center; display: flex;">
+                                    <div style="width: 15px; height: 100%;">
+                                        <div style="width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden;">
+                                            <img class="h-75" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" style="width: 100%; transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; opacity: 1; height: 100%;">
+                                        </div>
+                                    </div>
+                                    <div style="text-transform: uppercase; font-weight: 700; font-size: 9px; color: rgb(54, 54, 54);" class="mt-1 ms-2">30 mins</div>
+                                </div>
+                            </div>
+                        </div>
+                         <h6 class="fs-6 mb-0 ms-1 mt-1">Every Day Tea Powder</h6>
+                            <div class="h-25" style="align-items: center; display: flex; width: 100%;">
+                                <span class="ms-1 text-body-secondary mt-2" style="font-size: 13px; height: 13px;">500 ml</span>
+                            </div>
+                             <div class="price-add p-2 d-flex justify-content-between">
+                                <span class="mt-2 ">₹50</span>
+                             <button type="button" class="btn btn-outline-success">Add</button>
+                             </div>
+                        </div>
+                    </div>
+                    <!-- card 2 -->
+                    <div class="card col-auto" style="height: 18rem; width: 12rem;">
+                        <div class=" mt-3">
+                            <div width="140" height="140" class="d-flex justify-content-center">
+                                <img src="./Assets/Image/sub category/Dairy, Bread & Eggs/Bread & Pav.webp" alt="Amul Gold Full Cream Fresh Milk" width="140" height="140" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                            </div>
+                        </div>
+                    <div class="">
+                        <div style="height: 25px;" class="product_update">
+                            <div style="width: 70px; border-radius: 4px; border-width: 0px; padding: 0px 4px; background-color: rgb(248, 248, 248); display: flex; justify-content:start; align-items:start; height: 100%;">
+                                <div class="h-100" style=" align-items: center; display: flex;">
+                                    <div style="width: 15px; height: 100%;">
+                                        <div style="width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden;">
+                                            <img class="h-75" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" style="width: 100%; transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; opacity: 1; height: 100%;">
+                                        </div>
+                                    </div>
+                                    <div style="text-transform: uppercase; font-weight: 700; font-size: 9px; color: rgb(54, 54, 54);" class="mt-1 ms-2">30 mins</div>
+                                </div>
+                            </div>
+                        </div>
+                         <h6 class="fs-6 mb-0 ms-1 mt-1">Bread</h6>
+                            <div class="h-25" style="align-items: center; display: flex; width: 100%;">
+                                <span class="ms-1 text-body-secondary mt-2" style="font-size: 13px; height: 13px;">500 gm</span>
+                            </div>
+                             <div class="price-add p-2 d-flex justify-content-between">
+                                <span class="mt-2 ">₹100</span>
+                             <button type="button" class="btn btn-outline-success">Add</button>
+                             </div>
+                        </div>
+                    </div>
+                    <!-- card 3 -->
+                    <div class="card col-auto" style="height: 18rem; width: 12rem;">
+                        <div class=" mt-3">
+                            <div width="140" height="140" class="d-flex justify-content-center">
+                                <img src="./Assets/Image/sub category/Dairy, Bread & Eggs/Breakfast Mixes.webp" alt="Amul Gold Full Cream Fresh Milk" width="140" height="140" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                            </div>
+                        </div>
+                    <div class="">
+                        <div style="height: 25px;" class="product_update">
+                            <div style="width: 70px; border-radius: 4px; border-width: 0px; padding: 0px 4px; background-color: rgb(248, 248, 248); display: flex; justify-content:start; align-items:start; height: 100%;">
+                                <div class="h-100" style=" align-items: center; display: flex;">
+                                    <div style="width: 15px; height: 100%;">
+                                        <div style="width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden;">
+                                            <img class="h-75" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" style="width: 100%; transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; opacity: 1; height: 100%;">
+                                        </div>
+                                    </div>
+                                    <div style="text-transform: uppercase; font-weight: 700; font-size: 9px; color: rgb(54, 54, 54);" class="mt-1 ms-2">30 mins</div>
+                                </div>
+                            </div>
+                        </div>
+                         <h6 class="fs-6 mb-0 ms-1 mt-1">Breakfast Mixes</h6>
+                            <div class="h-25" style="align-items: center; display: flex; width: 100%;">
+                                <span class="ms-1 text-body-secondary mt-2" style="font-size: 13px; height: 13px;">500 gm</span>
+                            </div>
+                             <div class="price-add p-2 d-flex justify-content-between">
+                                <span class="mt-2 ">₹150</span>
+                             <button type="button" class="btn btn-outline-success">Add</button>
+                             </div>
+                        </div>
+                    </div>
+                    <!-- card 4 -->
+                    <div class="card col-auto" style="height: 18rem; width: 12rem;">
+                        <div class=" mt-3">
+                            <div width="140" height="140" class="d-flex justify-content-center">
+                                <img src="./Assets/Image/sub category/Dairy, Bread & Eggs/Butter & More.webp" alt="Amul Gold Full Cream Fresh Milk" width="140" height="140" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                            </div>
+                        </div>
+                    <div class="">
+                        <div style="height: 25px;" class="product_update">
+                            <div style="width: 70px; border-radius: 4px; border-width: 0px; padding: 0px 4px; background-color: rgb(248, 248, 248); display: flex; justify-content:start; align-items:start; height: 100%;">
+                                <div class="h-100" style=" align-items: center; display: flex;">
+                                    <div style="width: 15px; height: 100%;">
+                                        <div style="width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden;">
+                                            <img class="h-75" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" style="width: 100%; transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; opacity: 1; height: 100%;">
+                                        </div>
+                                    </div>
+                                    <div style="text-transform: uppercase; font-weight: 700; font-size: 9px; color: rgb(54, 54, 54);" class="mt-1 ms-2">30 mins</div>
+                                </div>
+                            </div>
+                        </div>
+                         <h6 class="fs-6 mb-0 ms-1 mt-1">Amul Butter</h6>
+                            <div class="h-25" style="align-items: center; display: flex; width: 100%;">
+                                <span class="ms-1 text-body-secondary mt-2" style="font-size: 13px; height: 13px;">50 gm</span>
+                            </div>
+                             <div class="price-add p-2 d-flex justify-content-between">
+                                <span class="mt-2 ">₹50</span>
+                             <button type="button" class="btn btn-outline-success">Add</button>
+                             </div>
+                        </div>
+                    </div>
+                    <!-- card 5 -->
+                    <div class="card col-auto" style="height: 18rem; width: 12rem;">
+                        <div class=" mt-3">
+                            <div width="140" height="140" class="d-flex justify-content-center">
+                                <img src="./Assets/Image/sub category/Dairy, Bread & Eggs/Curd & Yogurt.jpg" alt="Amul Gold Full Cream Fresh Milk" width="140" height="140" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                            </div>
+                        </div>
+                    <div class="">
+                        <div style="height: 25px;" class="product_update">
+                            <div style="width: 70px; border-radius: 4px; border-width: 0px; padding: 0px 4px; background-color: rgb(248, 248, 248); display: flex; justify-content:start; align-items:start; height: 100%;">
+                                <div class="h-100" style=" align-items: center; display: flex;">
+                                    <div style="width: 15px; height: 100%;">
+                                        <div style="width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden;">
+                                            <img class="h-75" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" style="width: 100%; transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; opacity: 1; height: 100%;">
+                                        </div>
+                                    </div>
+                                    <div style="text-transform: uppercase; font-weight: 700; font-size: 9px; color: rgb(54, 54, 54);" class="mt-1 ms-2">30 mins</div>
+                                </div>
+                            </div>
+                        </div>
+                         <h6 class="fs-6 mb-0 ms-1 mt-1">Curd & Yogurt</h6>
+                            <div class="h-25" style="align-items: center; display: flex; width: 100%;">
+                                <span class="ms-1 text-body-secondary mt-2" style="font-size: 13px; height: 13px;">500 ml</span>
+                            </div>
+                             <div class="price-add p-2 d-flex justify-content-between">
+                                <span class="mt-2 ">₹25</span>
+                             <button type="button" class="btn btn-outline-success">Add</button>
+                             </div>
+                        </div>
+                    </div>
+                    <!-- card 6 -->
+                    <div class="card col-auto" style="height: 18rem; width: 12rem;">
+                        <div class=" mt-3">
+                            <div width="140" height="140" class="d-flex justify-content-center">
+                                <img src="./Assets/Image/sub category/Dairy, Bread & Eggs/Energy Bars.png" alt="Amul Gold Full Cream Fresh Milk" width="140" height="140" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                            </div>
+                        </div>
+                    <div class="">
+                        <div style="height: 25px;" class="product_update">
+                            <div style="width: 70px; border-radius: 4px; border-width: 0px; padding: 0px 4px; background-color: rgb(248, 248, 248); display: flex; justify-content:start; align-items:start; height: 100%;">
+                                <div class="h-100" style=" align-items: center; display: flex;">
+                                    <div style="width: 15px; height: 100%;">
+                                        <div style="width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden;">
+                                            <img class="h-75" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" style="width: 100%; transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; opacity: 1; height: 100%;">
+                                        </div>
+                                    </div>
+                                    <div style="text-transform: uppercase; font-weight: 700; font-size: 9px; color: rgb(54, 54, 54);" class="mt-1 ms-2">30 mins</div>
+                                </div>
+                            </div>
+                        </div>
+                         <h6 class="fs-6 mb-0 ms-1 mt-1">Energy Bar</h6>
+                            <div class="h-25" style="align-items: center; display: flex; width: 100%;">
+                                <span class="ms-1 text-body-secondary mt-2" style="font-size: 13px; height: 13px;">500 ml</span>
+                            </div>
+                             <div class="price-add p-2 d-flex justify-content-between">
+                                <span class="mt-2 ">₹30</span>
+                             <button type="button" class="btn btn-outline-success">Add</button>
+                             </div>
+                        </div>
+                    </div>
+                    <!-- card 6 -->
+                    <div class="card col-auto" style="height: 18rem; width: 12rem;">
+                        <div class=" mt-3">
+                            <div width="140" height="140" class="d-flex justify-content-center">
+                                <img src="./Assets/Image/sub category/Dairy, Bread & Eggs/Energy Bars.png" alt="Amul Gold Full Cream Fresh Milk" width="140" height="140" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                            </div>
+                        </div>
+                    <div class="">
+                        <div style="height: 25px;" class="product_update">
+                            <div style="width: 70px; border-radius: 4px; border-width: 0px; padding: 0px 4px; background-color: rgb(248, 248, 248); display: flex; justify-content:start; align-items:start; height: 100%;">
+                                <div class="h-100" style=" align-items: center; display: flex;">
+                                    <div style="width: 15px; height: 100%;">
+                                        <div style="width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden;">
+                                            <img class="h-75" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" style="width: 100%; transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; opacity: 1; height: 100%;">
+                                        </div>
+                                    </div>
+                                    <div style="text-transform: uppercase; font-weight: 700; font-size: 9px; color: rgb(54, 54, 54);" class="mt-1 ms-2">30 mins</div>
+                                </div>
+                            </div>
+                        </div>
+                         <h6 class="fs-6 mb-0 ms-1 mt-1">Energy Bar</h6>
+                            <div class="h-25" style="align-items: center; display: flex; width: 100%;">
+                                <span class="ms-1 text-body-secondary mt-2" style="font-size: 13px; height: 13px;">500 ml</span>
+                            </div>
+                             <div class="price-add p-2 d-flex justify-content-between">
+                                <span class="mt-2 ">₹30</span>
+                             <button type="button" class="btn btn-outline-success">Add</button>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </section>
+         <!-- Fruits & vegetables  -->
+         <section class="dairy-breads-eggs mt-5">
+            <div class="container col-auto d-flex justify-content-between">
+                <div class="dairy"><h3>Fruits & Vegetables</h3></div>
+                <div class="seeall fs-5 fw-medium text-success">see all</div>
+            </div>
+            <div class="container ">
+                <div style="gap: 10px;" class="row container overflow-hidden flex-nowrap justify-content-between">
+                    <!-- card 1 -->
+                    <div class="card col-auto" style="height: 18.5rem; width: 12rem;">
+                        <div class=" mt-3">
+                            <div width="140" height="140" class="d-flex justify-content-center">
+                                <img src="./Assets/Image/sub category/Fruits & Vegetables/Certified Organic.webp" alt="Amul Gold Full Cream Fresh Milk" width="140" height="140" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                            </div>
+                        </div>
+                    <div class="">
+                        <div style="height: 25px;" class="product_update">
+                            <div style="width: 70px; border-radius: 4px; border-width: 0px; padding: 0px 4px; background-color: rgb(248, 248, 248); display: flex; justify-content:start; align-items:start; height: 100%;">
+                                <div class="h-100" style=" align-items: center; display: flex;">
+                                    <div style="width: 15px; height: 100%;">
+                                        <div style="width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden;">
+                                            <img class="h-75" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" style="width: 100%; transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; opacity: 1; height: 100%;">
+                                        </div>
+                                    </div>
+                                    <div style="text-transform: uppercase; font-weight: 700; font-size: 9px; color: rgb(54, 54, 54);" class="mt-1 ms-2">30 mins</div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="title mb-0 ms-1 mt-1 w-100">
+                                <h6 style="font-size: 14px;" >Organic Delicous Fresh</h6>
+                            </div>
+                            <div class="" style="height: 10%; align-items: center; display: flex; width: 100%;">
+                                <span class="text-body-secondary mt-2" style="font-size: 13px; height: 13px;">500 gm</span>
+                            </div>
+                             <div class="w-100 mt-4 price-add d-flex justify-content-between">
+                                <span class="mt-2">₹20</span>
+                             <button type="button" class="btn btn-outline-success">Add</button>
+                             </div>
+                        </div>
+                    </div>
+                    <!-- card 2 -->
+                    <div class="card col-auto" style="height: 18.5rem; width: 12rem;">
+                        <div class="mt-3">
+                            <div width="140" height="140" class="d-flex justify-content-center">
+                                <img src="./Assets/Image/sub category/Fruits & Vegetables/Combo & Recipes.webp" alt="Amul Gold Full Cream Fresh Milk" width="140" height="140" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                            </div>
+                        </div>
+                    <div class="">
+                        <div style="height: 25px;" class="product_update">
+                            <div style="width: 70px; border-radius: 4px; border-width: 0px; padding: 0px 4px; background-color: rgb(248, 248, 248); display: flex; justify-content:start; align-items:start; height: 100%;">
+                                <div class="h-100" style=" align-items: center; display: flex;">
+                                    <div style="width: 15px; height: 100%;">
+                                        <div style="width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden;">
+                                            <img class="h-75" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" style="width: 100%; transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; opacity: 1; height: 100%;">
+                                        </div>
+                                    </div>
+                                    <div style="text-transform: uppercase; font-weight: 700; font-size: 9px; color: rgb(54, 54, 54);" class="mt-1 ms-2">30 mins</div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="title mb-0 ms-1 mt-1 w-100">
+                              <h6 style="font-size: 14px;" >Mix Fruits Bucket</h6>
+                            </div>
+                            <div class="h-25" style="align-items: center; display: flex; width: 100%;">
+                                <span class="ms-1 text-body-secondary mt-2" style="font-size: 13px; height: 13px;">1 kg</span>
+                            </div>
+                             <div class="price-add mt-2 d-flex justify-content-between">
+                                <span class="mt-2">₹70</span>
+                             <button type="button" class="btn btn-outline-success">Add</button>
+                             </div>
+                        </div>
+                    </div>
+                    <!-- card 3 -->
+                    <div class="card col-auto" style="height: 18.5rem; width: 12rem;">
+                        <div class=" mt-3">
+                            <div width="140" height="140" class="d-flex justify-content-center">
+                                <img src="./Assets/Image/sub category/Fruits & Vegetables/Flowers & Leaves.webp" alt="Amul Gold Full Cream Fresh Milk" width="140" height="140" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                            </div>
+                        </div>
+                    <div class="">
+                        <div style="height: 25px;" class="product_update">
+                            <div style="width: 70px; border-radius: 4px; border-width: 0px; padding: 0px 4px; background-color: rgb(248, 248, 248); display: flex; justify-content:start; align-items:start; height: 100%;">
+                                <div class="h-100" style=" align-items: center; display: flex;">
+                                    <div style="width: 15px; height: 100%;">
+                                        <div style="width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden;">
+                                            <img class="h-75" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" style="width: 100%; transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; opacity: 1; height: 100%;">
+                                        </div>
+                                    </div>
+                                    <div style="text-transform: uppercase; font-weight: 700; font-size: 9px; color: rgb(54, 54, 54);" class="mt-1 ms-2">30 mins</div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="title mb-0 ms-1 mt-1 w-100">
+                                <h6 style="font-size: 14px;" >Fresh Flower</h6>
+                            </div>  
+                            <div class="h-25" style="align-items: center; display: flex; width: 100%;">
+                                <span class="ms-1 text-body-secondary mt-2" style="font-size: 13px; height: 13px;">500 gm</span>
+                            </div>
+                             <div class="price-add mt-2  d-flex justify-content-between">
+                                <span class="mt-2 ">₹100</span>
+                             <button type="button" class="btn btn-outline-success">Add</button>
+                             </div>
+                        </div>
+                    </div>
+                    <!-- card 4 -->
+                    <div class="card col-auto" style="height: 18.5rem; width: 12rem;">
+                        <div class=" mt-3">
+                            <div width="140" height="140" class="d-flex justify-content-center">
+                                <img src="./Assets/Image/sub category/Fruits & Vegetables/Fresh Vegetables.png" alt="Amul Gold Full Cream Fresh Milk" width="140" height="140" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                            </div>
+                        </div>
+                    <div class="">
+                        <div style="height: 25px;" class="product_update">
+                            <div style="width: 70px; border-radius: 4px; border-width: 0px; padding: 0px 4px; background-color: rgb(248, 248, 248); display: flex; justify-content:start; align-items:start; height: 100%;">
+                                <div class="h-100" style=" align-items: center; display: flex;">
+                                    <div style="width: 15px; height: 100%;">
+                                        <div style="width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden;">
+                                            <img class="h-75" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" style="width: 100%; transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; opacity: 1; height: 100%;">
+                                        </div>
+                                    </div>
+                                    <div style="text-transform: uppercase; font-weight: 700; font-size: 9px; color: rgb(54, 54, 54);" class="mt-1 ms-2">30 mins</div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="title mb-0 ms-1 mt-1 w-100">
+                                <h6 style="font-size: 14px;">Fresh Vegetables</h6>
+                            </div>
+                            <div class="h-25" style="align-items: center; display: flex; width: 100%;">
+                                <span class="ms-1 text-body-secondary mt-2" style="font-size: 13px; height: 13px;">1 kg</span>
+                            </div>
+                             <div class="price-add mt-2 d-flex justify-content-between">
+                                <span class="mt-2 ">₹30</span>
+                             <button type="button" class="btn btn-outline-success">Add</button>
+                             </div>
+                        </div>
+                    </div>
+                    <!-- card 5 -->
+                    <div class="card col-auto" style="height: 18.5rem; width: 12rem;">
+                        <div class=" mt-3">
+                            <div width="140" height="140" class="d-flex justify-content-center">
+                                <img src="./Assets/Image/sub category/Fruits & Vegetables/Freshly Cut Sprouts.webp" alt="Amul Gold Full Cream Fresh Milk" width="140" height="140" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                            </div>
+                        </div>
+                    <div class="">
+                        <div style="height: 25px;" class="product_update">
+                            <div style="width: 70px; border-radius: 4px; border-width: 0px; padding: 0px 4px; background-color: rgb(248, 248, 248); display: flex; justify-content:start; align-items:start; height: 100%;">
+                                <div class="h-100" style=" align-items: center; display: flex;">
+                                    <div style="width: 15px; height: 100%;">
+                                        <div style="width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden;">
+                                            <img class="h-75" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" style="width: 100%; transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; opacity: 1; height: 100%;">
+                                        </div>
+                                    </div>
+                                    <div style="text-transform: uppercase; font-weight: 700; font-size: 9px; color: rgb(54, 54, 54);" class="mt-1 ms-2">30 mins</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="title mb-0 ms-1 mt-1 w-100">
+                            <h6 style="font-size: 14px;" >Frshely Cu Sprous</h6>
+                        </div>
+                            <div class="h-25" style="align-items: center; display: flex; width: 100%;">
+                                <span class="ms-1 text-body-secondary mt-2" style="font-size: 13px; height: 13px;">500 gm</span>
+                            </div>
+                             <div class="price-add mt-2 d-flex justify-content-between">
+                                <span class="mt-2 ">₹70</span>
+                             <button type="button" class="btn btn-outline-success">Add</button>
+                             </div>
+                        </div>
+                    </div>
+                    <!-- card 6 -->
+                    <div class="card col-auto" style="height: 18.5rem; width: 12rem;">
+                        <div class=" mt-3">
+                            <div width="140" height="140" class="d-flex justify-content-center">
+                                <img src="./Assets/Image/sub category/Fruits & Vegetables/Leafies & Herbs.png" alt="Amul Gold Full Cream Fresh Milk" width="140" height="140" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                            </div>
+                        </div>
+                    <div class="">
+                        <div style="height: 25px;" class="product_update">
+                            <div style="width: 70px; border-radius: 4px; border-width: 0px; padding: 0px 4px; background-color: rgb(248, 248, 248); display: flex; justify-content:start; align-items:start; height: 100%;">
+                                <div class="h-100" style=" align-items: center; display: flex;">
+                                    <div style="width: 15px; height: 100%;">
+                                        <div style="width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden;">
+                                            <img class="h-75" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" style="width: 100%; transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; opacity: 1; height: 100%;">
+                                        </div>
+                                    </div>
+                                    <div style="text-transform: uppercase; font-weight: 700; font-size: 9px; color: rgb(54, 54, 54);" class="mt-1 ms-2">30 mins</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="title mb-0 ms-1 mt-1 w-100">
+                            <h6 style="font-size: 14px;" >Leafies</h6>
+                        </div>
+                            <div class="h-25" style="align-items: center; display: flex; width: 100%;">
+                                <span class="ms-1 text-body-secondary mt-2" style="font-size: 13px; height: 13px;">500 gm</span>
+                            </div>
+                             <div class="price-add mt-2 d-flex justify-content-between">
+                                <span class="mt-2 ">₹70</span>
+                             <button type="button" class="btn btn-outline-success">Add</button>
+                             </div>
+                        </div>
+                    </div>
+                    <!-- card 6 -->
+                    <div class="card col-auto" style="height: 18.5rem; width: 12rem;">
+                        <div class=" mt-3">
+                            <div width="140" height="140" class="d-flex justify-content-center">
+                                <img src="./Assets/Image/sub category/Fruits & Vegetables/Leafies & Herbs.png" alt="Amul Gold Full Cream Fresh Milk" width="140" height="140" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                            </div>
+                        </div>
+                    <div class="">
+                        <div style="height: 25px;" class="product_update">
+                            <div style="width: 70px; border-radius: 4px; border-width: 0px; padding: 0px 4px; background-color: rgb(248, 248, 248); display: flex; justify-content:start; align-items:start; height: 100%;">
+                                <div class="h-100" style=" align-items: center; display: flex;">
+                                    <div style="width: 15px; height: 100%;">
+                                        <div style="width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden;">
+                                            <img class="h-75" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" style="width: 100%; transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; opacity: 1; height: 100%;">
+                                        </div>
+                                    </div>
+                                    <div style="text-transform: uppercase; font-weight: 700; font-size: 9px; color: rgb(54, 54, 54);" class="mt-1 ms-2">30 mins</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="title mb-0 ms-1 mt-1 w-100">
+                            <h6 style="font-size: 14px;" >Leafies</h6>
+                        </div>
+                            <div class="h-25" style="align-items: center; display: flex; width: 100%;">
+                                <span class="ms-1 text-body-secondary mt-2" style="font-size: 13px; height: 13px;">500 gm</span>
+                            </div>
+                             <div class="price-add mt-2 d-flex justify-content-between">
+                                <span class="mt-2">₹70</span>
+                             <button type="button" class="btn btn-outline-success">Add</button>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </section>
+         <!-- BreakFast & InstantFoods  -->
+         <section class="dairy-breads-eggs mt-5">
+            <div class="container col-auto d-flex justify-content-between">
+                <div class="dairy"><h3>Breakfast & InstantFoods</h3></div>
+                <div class="seeall fs-5 fw-medium text-success">see all</div>
+            </div>
+            <div class="container ">
+                <div style="gap: 10px;" class="row container overflow-hidden flex-nowrap justify-content-between">
+                    <!-- card 1 -->
+                    <div class="card col-auto" style="height: 18.5rem; width: 12rem;">
+                        <div class="mt-3">
+                            <div width="140" height="140" class="d-flex justify-content-center">
+                                <img src="./Assets/Image/sub category/Breakfast & Instant Food/Dessert & Cake Mixes.webp" alt="Amul Gold Full Cream Fresh Milk" width="140" height="140" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                            </div>
+                        </div>
+                    <div class="">
+                        <div style="height: 25px;" class="product_update">
+                            <div style="width: 70px; border-radius: 4px; border-width: 0px; padding: 0px 4px; background-color: rgb(248, 248, 248); display: flex; justify-content:start; align-items:start; height: 100%;">
+                                <div class="h-100" style=" align-items: center; display: flex;">
+                                    <div style="width: 15px; height: 100%;">
+                                        <div style="width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden;">
+                                            <img class="h-75" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" style="width: 100%; transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; opacity: 1; height: 100%;">
+                                        </div>
+                                    </div>
+                                    <div style="text-transform: uppercase; font-weight: 700; font-size: 9px; color: rgb(54, 54, 54);" class="mt-1 ms-2">30 mins</div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="title mb-0 ms-1 mt-1 w-100">
+                              <h6 style="font-size: 14px;" >Gulab Jamun</h6>
+                            </div>
+                            <div class="h-25" style="align-items: center; display: flex; width: 100%;">
+                                <span class="ms-1 text-body-secondary mt-2" style="font-size: 13px; height: 13px;">1 kg</span>
+                            </div>
+                             <div class="price-add mt-2 d-flex justify-content-between">
+                                <span class="mt-2">₹70</span>
+                             <button type="button" class="btn btn-outline-success">Add</button>
+                             </div>
+                        </div>
+                    </div>
+                    <!-- card 2 -->
+                    <div class="card col-auto" style="height: 18.5rem; width: 12rem;">
+                        <div class="mt-3">
+                            <div width="140" height="140" class="d-flex justify-content-center">
+                                <img src="./Assets/Image/sub category/Breakfast & Instant Food/Herbs & Seasoning.webp   " alt="Amul Gold Full Cream Fresh Milk" width="140" height="140" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                            </div>
+                        </div>
+                    <div class="">
+                        <div style="height: 25px;" class="product_update">
+                            <div style="width: 70px; border-radius: 4px; border-width: 0px; padding: 0px 4px; background-color: rgb(248, 248, 248); display: flex; justify-content:start; align-items:start; height: 100%;">
+                                <div class="h-100" style=" align-items: center; display: flex;">
+                                    <div style="width: 15px; height: 100%;">
+                                        <div style="width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden;">
+                                            <img class="h-75" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" style="width: 100%; transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; opacity: 1; height: 100%;">
+                                        </div>
+                                    </div>
+                                    <div style="text-transform: uppercase; font-weight: 700; font-size: 9px; color: rgb(54, 54, 54);" class="mt-1 ms-2">30 mins</div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="title mb-0 ms-1 mt-1 w-100">
+                              <h6 style="font-size: 14px;" >Herbs & Seasonig</h6>
+                            </div>
+                            <div class="h-25" style="align-items: center; display: flex; width: 100%;">
+                                <span class="ms-1 text-body-secondary mt-2" style="font-size: 13px; height: 13px;">500 gm</span>
+                            </div>
+                             <div class="price-add mt-2 d-flex justify-content-between">
+                                <span class="mt-2">₹125 </span>
+                             <button type="button" class="btn btn-outline-success">Add</button>
+                             </div>
+                        </div>
+                    </div>
+                    <!-- card 3 -->
+                    <div class="card col-auto" style="height: 18.5rem; width: 12rem;">
+                        <div class=" mt-3">
+                            <div width="140" height="140" class="d-flex justify-content-center">
+                                <img src="./Assets/Image/sub category/Breakfast & Instant Food/Imported Noodles & Pasta.webp" alt="Amul Gold Full Cream Fresh Milk" width="140" height="140" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                            </div>
+                        </div>
+                    <div class="">
+                        <div style="height: 25px;" class="product_update">
+                            <div style="width: 70px; border-radius: 4px; border-width: 0px; padding: 0px 4px; background-color: rgb(248, 248, 248); display: flex; justify-content:start; align-items:start; height: 100%;">
+                                <div class="h-100" style=" align-items: center; display: flex;">
+                                    <div style="width: 15px; height: 100%;">
+                                        <div style="width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden;">
+                                            <img class="h-75" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" style="width: 100%; transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; opacity: 1; height: 100%;">
+                                        </div>
+                                    </div>
+                                    <div style="text-transform: uppercase; font-weight: 700; font-size: 9px; color: rgb(54, 54, 54);" class="mt-1 ms-2">30 mins</div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="title mb-0 ms-1 mt-1 w-100">
+                                <h6 style="font-size: 14px;" >Imported Nodles & Pasta</h6>
+                            </div>  
+                            <div class="h-25" style="align-items: center; display: flex; width: 100%;">
+                                <span class="ms-1 text-body-secondary mt-2" style="font-size: 13px; height: 13px;">250 gm</span>
+                            </div>
+                             <div class="price-add mt-2  d-flex justify-content-between">
+                                <span class="mt-2 ">₹75</span>
+                             <button type="button" class="btn btn-outline-success">Add</button>
+                             </div>
+                        </div>
+                    </div>
+                    <!-- card 4 -->
+                    <div class="card col-auto" style="height: 18.5rem; width: 12rem;">
+                        <div class=" mt-3">
+                            <div width="140" height="140" class="d-flex justify-content-center">
+                                <img src="./Assets/Image/sub category/Breakfast & Instant Food/Instant Mixes.webp" alt="Amul Gold Full Cream Fresh Milk" width="140" height="140" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                            </div>
+                        </div>
+                    <div class="">
+                        <div style="height: 25px;" class="product_update">
+                            <div style="width: 70px; border-radius: 4px; border-width: 0px; padding: 0px 4px; background-color: rgb(248, 248, 248); display: flex; justify-content:start; align-items:start; height: 100%;">
+                                <div class="h-100" style=" align-items: center; display: flex;">
+                                    <div style="width: 15px; height: 100%;">
+                                        <div style="width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden;">
+                                            <img class="h-75" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" style="width: 100%; transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; opacity: 1; height: 100%;">
+                                        </div>
+                                    </div>
+                                    <div style="text-transform: uppercase; font-weight: 700; font-size: 9px; color: rgb(54, 54, 54);" class="mt-1 ms-2">30 mins</div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="title mb-0 ms-1 mt-1 w-100">
+                                <h6 style="font-size: 14px;">Instant Mixes</h6>
+                            </div>
+                            <div class="h-25" style="align-items: center; display: flex; width: 100%;">
+                                <span class="ms-1 text-body-secondary mt-2" style="font-size: 13px; height: 13px;">1 kg</span>
+                            </div>
+                             <div class="price-add mt-2 d-flex justify-content-between">
+                                <span class="mt-2 ">₹300</span>
+                             <button type="button" class="btn btn-outline-success">Add</button>
+                             </div>
+                        </div>
+                    </div>
+                    <!-- card 5 -->
+                    <div class="card col-auto" style="height: 18.5rem; width: 12rem;">
+                        <div class=" mt-3">
+                            <div width="140" height="140" class="d-flex justify-content-center">
+                                <img src="./Assets/Image/sub category/Breakfast & Instant Food/Noodles.webp" alt="Amul Gold Full Cream Fresh Milk" width="140" height="140" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                            </div>
+                        </div>
+                    <div class="">
+                        <div style="height: 25px;" class="product_update">
+                            <div style="width: 70px; border-radius: 4px; border-width: 0px; padding: 0px 4px; background-color: rgb(248, 248, 248); display: flex; justify-content:start; align-items:start; height: 100%;">
+                                <div class="h-100" style=" align-items: center; display: flex;">
+                                    <div style="width: 15px; height: 100%;">
+                                        <div style="width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden;">
+                                            <img class="h-75" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" style="width: 100%; transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; opacity: 1; height: 100%;">
+                                        </div>
+                                    </div>
+                                    <div style="text-transform: uppercase; font-weight: 700; font-size: 9px; color: rgb(54, 54, 54);" class="mt-1 ms-2">30 mins</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="title mb-0 ms-1 mt-1 w-100">
+                            <h6 style="font-size: 14px;" >Noodles</h6>
+                        </div>
+                            <div class="h-25" style="align-items: center; display: flex; width: 100%;">
+                                <span class="ms-1 text-body-secondary mt-2" style="font-size: 13px; height: 13px;">75 gm</span>
+                            </div>
+                             <div class="price-add mt-2 d-flex justify-content-between">
+                                <span class="mt-2 ">₹80</span>
+                             <button type="button" class="btn btn-outline-success">Add</button>
+                             </div>
+                        </div>
+                    </div>
+                    <!-- card 6 -->
+                    <div class="card col-auto" style="height: 18.5rem; width: 12rem;">
+                        <div class=" mt-3">
+                            <div width="140" height="140" class="d-flex justify-content-center">
+                                <img src="./Assets/Image/sub category/Breakfast & Instant Food/Pasta.webp" alt="Amul Gold Full Cream Fresh Milk" width="140" height="140" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                            </div>
+                        </div>
+                    <div class="">
+                        <div style="height: 25px;" class="product_update">
+                            <div style="width: 70px; border-radius: 4px; border-width: 0px; padding: 0px 4px; background-color: rgb(248, 248, 248); display: flex; justify-content:start; align-items:start; height: 100%;">
+                                <div class="h-100" style=" align-items: center; display: flex;">
+                                    <div style="width: 15px; height: 100%;">
+                                        <div style="width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden;">
+                                            <img class="h-75" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" style="width: 100%; transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; opacity: 1; height: 100%;">
+                                        </div>
+                                    </div>
+                                    <div style="text-transform: uppercase; font-weight: 700; font-size: 9px; color: rgb(54, 54, 54);" class="mt-1 ms-2">30 mins</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="title mb-0 ms-1 mt-1 w-100">
+                            <h6 style="font-size: 14px;" >Pasta</h6>
+                        </div>
+                            <div class="h-25" style="align-items: center; display: flex; width: 100%;">
+                                <span class="ms-1 text-body-secondary mt-2" style="font-size: 13px; height: 13px;">1 kg</span>
+                            </div>
+                             <div class="price-add mt-2 d-flex justify-content-between">
+                                <span class="mt-2 ">₹99</span>
+                             <button type="button" class="btn btn-outline-success">Add</button>
+                             </div>
+                        </div>
+                    </div>
+                    <!-- card 7 -->
+                    <div class="card col-auto" style="height: 18.5rem; width: 12rem;">
+                        <div class=" mt-3">
+                            <div width="140" height="140" class="d-flex justify-content-center">
+                                <img src="./Assets/Image/sub category/Breakfast & Instant Food/Soup.webp" alt="Amul Gold Full Cream Fresh Milk" width="140" height="140" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                            </div>
+                        </div>
+                    <div class="">
+                        <div style="height: 25px;" class="product_update">
+                            <div style="width: 70px; border-radius: 4px; border-width: 0px; padding: 0px 4px; background-color: rgb(248, 248, 248); display: flex; justify-content:start; align-items:start; height: 100%;">
+                                <div class="h-100" style=" align-items: center; display: flex;">
+                                    <div style="width: 15px; height: 100%;">
+                                        <div style="width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden;">
+                                            <img class="h-75" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" style="width: 100%; transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; opacity: 1; height: 100%;">
+                                        </div>
+                                    </div>
+                                    <div style="text-transform: uppercase; font-weight: 700; font-size: 9px; color: rgb(54, 54, 54);" class="mt-1 ms-2">30 mins</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="title mb-0 ms-1 mt-1 w-100">
+                            <h6 style="font-size: 14px;" >Soup</h6>
+                        </div>
+                            <div class="h-25" style="align-items: center; display: flex; width: 100%;">
+                                <span class="ms-1 text-body-secondary mt-2" style="font-size: 13px; height: 13px;">25 gm</span>
+                            </div>
+                             <div class="price-add mt-2 d-flex justify-content-between">
+                                <span class="mt-2">₹30</span>
+                             <button type="button" class="btn btn-outline-success">Add</button>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </section>
+         <!--  Cold Drinks -->
+         <section class="dairy-breads-eggs mt-5">
+            <div class="container col-auto d-flex justify-content-between">
+                <div class="dairy"><h4 class="fw-bold">Cold Drinks & Juices</h4></div>
+                <div class="seeall fs-5 fw-medium text-success">see all</div>
+            </div>
+            <div class="container ">
+                <div style="gap: 10px;" class="row container overflow-hidden flex-nowrap justify-content-between">
+                    <!-- card 1 -->
+                    <div class="card col-auto" style="height: 18.5rem; width: 12rem;">
+                        <div class="mt-3">
+                            <div width="140" height="140" class="d-flex justify-content-center">
+                                <img src="./Assets/Image/sub category/Cold Drinks & Juices/Beverages Gift Packs.webp" alt="Amul Gold Full Cream Fresh Milk" width="140" height="140" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                            </div>
+                        </div>
+                    <div class="">
+                        <div style="height: 25px;" class="product_update">
+                            <div style="width: 70px; border-radius: 4px; border-width: 0px; padding: 0px 4px; background-color: rgb(248, 248, 248); display: flex; justify-content:start; align-items:start; height: 100%;">
+                                <div class="h-100" style=" align-items: center; display: flex;">
+                                    <div style="width: 15px; height: 100%;">
+                                        <div style="width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden;">
+                                            <img class="h-75" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" style="width: 100%; transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; opacity: 1; height: 100%;">
+                                        </div>
+                                    </div>
+                                    <div style="text-transform: uppercase; font-weight: 700; font-size: 9px; color: rgb(54, 54, 54);" class="mt-1 ms-2">30 mins</div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="title mb-0 ms-1 mt-1 w-100">
+                              <h6 style="font-size: 14px;" >Beverages Gift Packs</h6>
+                            </div>
+                            <div class="h-25" style="align-items: center; display: flex; width: 100%;">
+                                <span class="ms-1 text-body-secondary mt-2" style="font-size: 13px; height: 13px;">500 ml</span>
+                            </div>
+                             <div class="price-add mt-2 d-flex justify-content-between">
+                                <span class="mt-2">₹100</span>
+                             <button type="button" class="btn btn-outline-success">Add</button>
+                             </div>
+                        </div>
+                    </div>
+                    <!-- card 2 -->
+                    <div class="card col-auto" style="height: 18.5rem; width: 12rem;">
+                        <div class="mt-3">
+                            <div width="140" height="140" class="d-flex justify-content-center">
+                                <img src="./Assets/Image/sub category/Cold Drinks & Juices/Coconut Water.webp" alt="Amul Gold Full Cream Fresh Milk" width="140" height="140" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                            </div>
+                        </div>
+                    <div class="">
+                        <div style="height: 25px;" class="product_update">
+                            <div style="width: 70px; border-radius: 4px; border-width: 0px; padding: 0px 4px; background-color: rgb(248, 248, 248); display: flex; justify-content:start; align-items:start; height: 100%;">
+                                <div class="h-100" style=" align-items: center; display: flex;">
+                                    <div style="width: 15px; height: 100%;">
+                                        <div style="width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden;">
+                                            <img class="h-75" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" style="width: 100%; transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; opacity: 1; height: 100%;">
+                                        </div>
+                                    </div>
+                                    <div style="text-transform: uppercase; font-weight: 700; font-size: 9px; color: rgb(54, 54, 54);" class="mt-1 ms-2">30 mins</div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="title mb-0 ms-1 mt-1 w-100">
+                              <h6 style="font-size: 14px;" >B natural Coconut Water</h6>
+                            </div>
+                            <div class="h-25" style="align-items: center; display: flex; width: 100%;">
+                                <span class="ms-1 text-body-secondary mt-2" style="font-size: 13px; height: 13px;">50 ml</span>
+                            </div>
+                             <div  class="price-add mt-2 d-flex justify-content-between">
+                                <span class="mt-2">₹20 </span>
+                             <button type="button" class="btn btn-outline-success">Add</button>
+                             </div>
+                        </div>
+                    </div>
+                    <!-- card 3 -->
+                    <div class="card col-auto" style="height: 18.5rem; width: 12rem;">
+                        <div class=" mt-3">
+                            <div width="140" height="140" class="d-flex justify-content-center">
+                                <img src="./Assets/Image/sub category/Cold Drinks & Juices/Energy Drinks.webp" alt="Amul Gold Full Cream Fresh Milk" width="140" height="140" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                            </div>
+                        </div>
+                    <div class="">
+                        <div style="height: 25px;" class="product_update">
+                            <div style="width: 70px; border-radius: 4px; border-width: 0px; padding: 0px 4px; background-color: rgb(248, 248, 248); display: flex; justify-content:start; align-items:start; height: 100%;">
+                                <div class="h-100" style=" align-items: center; display: flex;">
+                                    <div style="width: 15px; height: 100%;">
+                                        <div style="width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden;">
+                                            <img class="h-75" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" style="width: 100%; transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; opacity: 1; height: 100%;">
+                                        </div>
+                                    </div>
+                                    <div style="text-transform: uppercase; font-weight: 700; font-size: 9px; color: rgb(54, 54, 54);" class="mt-1 ms-2">30 mins</div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="title mb-0 ms-1 mt-1 w-100">
+                                <h6 style="font-size: 14px;" >Energy Drink (250)ml</h6>
+                            </div>
+                            <div class="" style="height: 10%; align-items: center; display: flex; width: 100%;">
+                                <span class="text-body-secondary mt-2" style="font-size: 13px; height: 13px;">500 gm</span>
+                            </div>
+                             <div style="margin-top: 15%;" class="w-100 price-add d-flex justify-content-between">
+                                <span class="mt-2">₹20</span>
+                             <button type="button" class="btn btn-outline-success">Add</button>
+                             </div>
+                        </div>
+                    </div>
+                    <!-- card 4 -->
+                    <div class="card col-auto" style="height: 18.5rem; width: 12rem;">
+                        <div class=" mt-3">
+                            <div width="140" height="140" class="d-flex justify-content-center">
+                                <img src="./Assets/Image/sub category/Cold Drinks & Juices/Fruit Juices.webp" alt="Amul Gold Full Cream Fresh Milk" width="140" height="140" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                            </div>
+                        </div>
+                    <div class="">
+                        <div style="height: 25px;" class="product_update">
+                            <div style="width: 70px; border-radius: 4px; border-width: 0px; padding: 0px 4px; background-color: rgb(248, 248, 248); display: flex; justify-content:start; align-items:start; height: 100%;">
+                                <div class="h-100" style=" align-items: center; display: flex;">
+                                    <div style="width: 15px; height: 100%;">
+                                        <div style="width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden;">
+                                            <img class="h-75" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" style="width: 100%; transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; opacity: 1; height: 100%;">
+                                        </div>
+                                    </div>
+                                    <div style="text-transform: uppercase; font-weight: 700; font-size: 9px; color: rgb(54, 54, 54);" class="mt-1 ms-2">30 mins</div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="title mb-0 ms-1 mt-1 w-100">
+                                <h6 style="font-size: 14px;">Real Apple Fruit Juices</h6>
+                            </div>
+                            <div class="" style="align-items: center; display: flex; width: 100%;">
+                                <span class="ms-1 text-body-secondary mt-2" style="font-size: 13px; height: 13px;">100 ml</span>
+                            </div>
+                             <div class="price-add w-100 mt-3 d-flex justify-content-between">
+                                <span class="mt-2 ">₹300</span>
+                             <button type="button" class="btn btn-outline-success">Add</button>
+                             </div>
+                        </div>
+                    </div>
+                    <!-- card 5 -->
+                    <div class="card col-auto" style="height: 18.5rem; width: 12rem;">
+                        <div class=" mt-3">
+                            <div width="140" height="140" class="d-flex justify-content-center">
+                                <img src="./Assets/Image/sub category/Cold Drinks & Juices/Herbal Drinks.webp" alt="Amul Gold Full Cream Fresh Milk" width="140" height="140" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                            </div>
+                        </div>
+                    <div class="">
+                        <div style="height: 25px;" class="product_update">
+                            <div style="width: 70px; border-radius: 4px; border-width: 0px; padding: 0px 4px; background-color: rgb(248, 248, 248); display: flex; justify-content:start; align-items:start; height: 100%;">
+                                <div class="h-100" style=" align-items: center; display: flex;">
+                                    <div style="width: 15px; height: 100%;">
+                                        <div style="width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden;">
+                                            <img class="h-75" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" style="width: 100%; transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; opacity: 1; height: 100%;">
+                                        </div>
+                                    </div>
+                                    <div style="text-transform: uppercase; font-weight: 700; font-size: 9px; color: rgb(54, 54, 54);" class="mt-1 ms-2">30 mins</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="title mb-0 ms-1 mt-1 w-100">
+                            <h6 style="font-size: 14px;" >Herbal Drink</h6>
+                        </div>
+                            <div class="h-25" style="align-items: center; display: flex; width: 100%;">
+                                <span class="ms-1 text-body-secondary mt-2" style="font-size: 13px; height: 13px;">75 ml</span>
+                            </div>
+                             <div class="price-add mt-2 d-flex justify-content-between">
+                                <span class="mt-2 ">₹105</span>
+                             <button type="button" class="btn btn-outline-success">Add</button>
+                             </div>
+                        </div>
+                    </div>
+                    <!-- card 6 -->
+                    <div class="card col-auto" style="height: 18.5rem; width: 12rem;">
+                        <div class=" mt-3">
+                            <div width="140" height="140" class="d-flex justify-content-center">
+                                <img src="./Assets/Image/sub category/Cold Drinks & Juices/Imported Beverages.webp" alt="Amul Gold Full Cream Fresh Milk" width="140" height="140" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                            </div>
+                        </div>
+                    <div class="">
+                        <div style="height: 25px;" class="product_update">
+                            <div style="width: 70px; border-radius: 4px; border-width: 0px; padding: 0px 4px; background-color: rgb(248, 248, 248); display: flex; justify-content:start; align-items:start; height: 100%;">
+                                <div class="h-100" style=" align-items: center; display: flex;">
+                                    <div style="width: 15px; height: 100%;">
+                                        <div style="width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden;">
+                                            <img class="h-75" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" style="width: 100%; transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; opacity: 1; height: 100%;">
+                                        </div>
+                                    </div>
+                                    <div style="text-transform: uppercase; font-weight: 700; font-size: 9px; color: rgb(54, 54, 54);" class="mt-1 ms-2">30 mins</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="title mb-0 ms-1 mt-1 w-100">
+                            <h6 style="font-size: 14px;" >Imported Beverages</h6>
+                        </div>
+                            <div class="h-25" style="align-items: center; display: flex; width: 100%;">
+                                <span class="ms-1 text-body-secondary mt-2" style="font-size: 13px; height: 13px;">50 ml</span>
+                            </div>
+                             <div class="price-add mt-2 d-flex justify-content-between">
+                                <span class="mt-2 ">₹99</span>
+                             <button type="button" class="btn btn-outline-success">Add</button>
+                             </div>
+                        </div>
+                    </div>
+                    <!-- card 7 -->
+                    <div class="card col-auto" style="height: 18.5rem; width: 12rem;">
+                        <div class=" mt-3">
+                            <div width="140" height="140" class="d-flex justify-content-center">
+                                <img src="./Assets/Image/sub category/Cold Drinks & Juices/Milk Drinks.webp" alt="Amul Gold Full Cream Fresh Milk" width="140" height="140" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                            </div>
+                        </div>
+                    <div class="">
+                        <div style="height: 25px;" class="product_update">
+                            <div style="width: 70px; border-radius: 4px; border-width: 0px; padding: 0px 4px; background-color: rgb(248, 248, 248); display: flex; justify-content:start; align-items:start; height: 100%;">
+                                <div class="h-100" style=" align-items: center; display: flex;">
+                                    <div style="width: 15px; height: 100%;">
+                                        <div style="width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden;">
+                                            <img class="h-75" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" style="width: 100%; transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; opacity: 1; height: 100%;">
+                                        </div>
+                                    </div>
+                                    <div style="text-transform: uppercase; font-weight: 700; font-size: 9px; color: rgb(54, 54, 54);" class="mt-1 ms-2">30 mins</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="title mb-0 ms-1 mt-1 w-100">
+                            <h6 style="font-size: 14px;" >Milk Drink</h6>
+                        </div>
+                            <div class="h-25" style="align-items: center; display: flex; width: 100%;">
+                                <span class="ms-1 text-body-secondary mt-2" style="font-size: 13px; height: 13px;">30 ml</span>
+                            </div>
+                             <div class="price-add mt-2 d-flex justify-content-between">
+                                <span class="mt-2">₹20</span>
+                             <button type="button" class="btn btn-outline-success">Add</button>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </section>
+         <!-- Cleaning Essential  -->
+         <section class="dairy-breads-eggs mt-5">
+            <div class="container col-auto d-flex justify-content-between">
+                <div class="dairy"><h4 class="fw-bold">Cleaning & essential</h4></div>
+                <div class="seeall fs-5 fw-medium text-success">see all</div>
+            </div>
+            <div class="container ">
+                <div style="gap: 10px;" class="row container overflow-x-hidden flex-nowrap justify-content-between">
+                    <!-- card 1 -->
+                    <div class="card col-auto" style="height: 18.5rem; width: 12rem;">
+                        <div class="mt-3">
+                            <div width="140" height="140" class="d-flex justify-content-center">
+                                <img src="./Assets/Image/sub category/Cleaning Essentials/Cleaning Tools.webp" alt="Amul Gold Full Cream Fresh Milk" width="140" height="140" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                            </div>
+                        </div>
+                    <div class="">
+                        <div style="height: 25px;" class="product_update">
+                            <div style="width: 70px; border-radius: 4px; border-width: 0px; padding: 0px 4px; background-color: rgb(248, 248, 248); display: flex; justify-content:start; align-items:start; height: 100%;">
+                                <div class="h-100" style=" align-items: center; display: flex;">
+                                    <div style="width: 15px; height: 100%;">
+                                        <div style="width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden;">
+                                            <img class="h-75" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" style="width: 100%; transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; opacity: 1; height: 100%;">
+                                        </div>
+                                    </div>
+                                    <div style="text-transform: uppercase; font-weight: 700; font-size: 9px; color: rgb(54, 54, 54);" class="mt-1 ms-2">30 mins</div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="title mb-0 ms-1 mt-1 w-100">
+                              <h6 style="font-size: 14px;" >Cleaning Wiper</h6>
+                            </div>
+                            <div class="h-25" style="align-items: center; display: flex; width: 100%;">
+                                <span class="ms-1 text-body-secondary mt-2" style="font-size: 13px; height: 13px;">1 Piece</span>
+                            </div>
+                             <div class="price-add mt-2 d-flex justify-content-between">
+                                <span class="mt-2">₹100</span>
+                             <button type="button" class="btn btn-outline-success">Add</button>
+                             </div>
+                        </div>
+                    </div>
+                    <!-- card 2 -->
+                    <div class="card col-auto" style="height: 18.5rem; width: 12rem;">
+                        <div class="mt-3">
+                            <div width="140" height="140" class="d-flex justify-content-center">
+                                <img src="./Assets/Image/sub category/Cleaning Essentials/Detergent Powder & Bars.webp" alt="Amul Gold Full Cream Fresh Milk" width="140" height="140" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                            </div>
+                        </div>
+                    <div class="">
+                        <div style="height: 25px;" class="product_update">
+                            <div style="width: 70px; border-radius: 4px; border-width: 0px; padding: 0px 4px; background-color: rgb(248, 248, 248); display: flex; justify-content:start; align-items:start; height: 100%;">
+                                <div class="h-100" style=" align-items: center; display: flex;">
+                                    <div style="width: 15px; height: 100%;">
+                                        <div style="width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden;">
+                                            <img class="h-75" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" style="width: 100%; transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; opacity: 1; height: 100%;">
+                                        </div>
+                                    </div>
+                                    <div style="text-transform: uppercase; font-weight: 700; font-size: 9px; color: rgb(54, 54, 54);" class="mt-1 ms-2">30 mins</div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="title mb-0 ms-1 mt-1 w-100">
+                              <h6 style="font-size: 14px;" >B natural Coconut Water</h6>
+                            </div>
+                            <div class="h-25" style="align-items: center; display: flex; width: 100%;">
+                                <span class="ms-1 text-body-secondary mt-2" style="font-size: 13px; height: 13px;">500 gm</span>
+                            </div>
+                             <div class="price-add mt-2 d-flex justify-content-between">
+                                <span class="mt-2">₹50</span>
+                             <button type="button" class="btn btn-outline-success">Add</button>
+                             </div>
+                        </div>
+                    </div>
+                    <!-- card 3 -->
+                    <div class="card col-auto" style="height: 18.5rem; width: 12rem;">
+                        <div class=" mt-3">
+                            <div width="140" height="140" class="d-flex justify-content-center">
+                                <img src="./Assets/Image/sub category/Cleaning Essentials/Dishwashing Accessories.webp" alt="Amul Gold Full Cream Fresh Milk" width="140" height="140" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                            </div>
+                        </div>
+                    <div class="">
+                        <div style="height: 25px;" class="product_update">
+                            <div style="width: 70px; border-radius: 4px; border-width: 0px; padding: 0px 4px; background-color: rgb(248, 248, 248); display: flex; justify-content:start; align-items:start; height: 100%;">
+                                <div class="h-100" style=" align-items: center; display: flex;">
+                                    <div style="width: 15px; height: 100%;">
+                                        <div style="width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden;">
+                                            <img class="h-75" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" style="width: 100%; transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; opacity: 1; height: 100%;">
+                                        </div>
+                                    </div>
+                                    <div style="text-transform: uppercase; font-weight: 700; font-size: 9px; color: rgb(54, 54, 54);" class="mt-1 ms-2">30 mins</div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="title mb-0 ms-1 mt-1 w-100">
+                                <h6 style="font-size: 14px;" >Dishwashing Accessories</h6>
+                            </div>  
+                            <div class="h-25" style="align-items: center; display: flex; width: 100%;">
+                                <span class="ms-1 text-body-secondary mt-2" style="font-size: 13px; height: 13px;">1 Piece</span>
+                            </div>  
+                             <div class="price-add mt-2  d-flex justify-content-between">
+                                <span class="mt-2  fs-6 fw-medium">₹25</span>
+                             <button type="button" class="btn btn-outline-success">Add</button>
+                             </div>
+                        </div>
+                    </div>
+                    <!-- card 4 -->
+                    <div class="card col-auto" style="height: 18.5rem; width: 12rem;">
+                        <div class=" mt-3">
+                            <div width="140" height="140" class="d-flex justify-content-center">
+                                <img src="./Assets/Image/sub category/Cleaning Essentials/Dishwashing Bars.webp" alt="Amul Gold Full Cream Fresh Milk" width="140" height="140" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                            </div>
+                        </div>
+                    <div class="">
+                        <div style="height: 25px;" class="product_update">
+                            <div style="width: 70px; border-radius: 4px; border-width: 0px; padding: 0px 4px; background-color: rgb(248, 248, 248); display: flex; justify-content:start; align-items:start; height: 100%;">
+                                <div class="h-100" style=" align-items: center; display: flex;">
+                                    <div style="width: 15px; height: 100%;">
+                                        <div style="width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden;">
+                                            <img class="h-75" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" style="width: 100%; transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; opacity: 1; height: 100%;">
+                                        </div>
+                                    </div>
+                                    <div style="text-transform: uppercase; font-weight: 700; font-size: 9px; color: rgb(54, 54, 54);" class="mt-1 ms-2">30 mins</div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="title mb-0 ms-1 mt-1 w-100">
+                                <h6 style="font-size: 14px;">Vim Wash Bar</h6>
+                            </div>
+                            <div class="h-25" style="align-items: center; display: flex; width: 100%;">
+                                <span class="ms-1 text-body-secondary mt-2" style="font-size: 13px; height: 13px;">20 g</span>
+                            </div>
+                             <div class="price-add mt-2 d-flex justify-content-between">
+                                <span class="mt-2 ">₹10</span>
+                             <button type="button" class="btn btn-outline-success">Add</button>
+                             </div>
+                        </div>
+                    </div>
+                    <!-- card 5 -->
+                    <div class="card col-auto" style="height: 18.5rem; width: 12rem;">
+                        <div class=" mt-3">
+                            <div width="140" height="140" class="d-flex justify-content-center">
+                                <img src="./Assets/Image/sub category/Cleaning Essentials/Floor Cleaners & More.webp" alt="Amul Gold Full Cream Fresh Milk" width="140" height="140" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                            </div>
+                        </div>
+                    <div class="">
+                        <div style="height: 25px;" class="product_update">
+                            <div style="width: 70px; border-radius: 4px; border-width: 0px; padding: 0px 4px; background-color: rgb(248, 248, 248); display: flex; justify-content:start; align-items:start; height: 100%;">
+                                <div class="h-100" style=" align-items: center; display: flex;">
+                                    <div style="width: 15px; height: 100%;">
+                                        <div style="width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden;">
+                                            <img class="h-75" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" style="width: 100%; transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; opacity: 1; height: 100%;">
+                                        </div>
+                                    </div>
+                                    <div style="text-transform: uppercase; font-weight: 700; font-size: 9px; color: rgb(54, 54, 54);" class="mt-1 ms-2">30 mins</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="title mb-0 ms-1 mt-1 w-100">
+                            <h6 style="font-size: 14px;" >Lizol Floor Cleaner </h6>
+                        </div>
+                            <div class="h-25" style="align-items: center; display: flex; width: 100%;">
+                                <span class="ms-1 text-body-secondary mt-2" style="font-size: 13px; height: 13px;">75 ml</span>
+                            </div>
+                             <div class="price-add mt-2 d-flex justify-content-between">
+                                <span class="mt-2 ">₹105</span>
+                             <button type="button" class="btn btn-outline-success">Add</button>
+                             </div>
+                        </div>
+                    </div>
+                    <!-- card 6 -->
+                    <div class="card col-auto" style="height: 18.5rem; width: 12rem;">
+                        <div class=" mt-3">
+                            <div width="140" height="140" class="d-flex justify-content-center">
+                                <img src="./Assets/Image/sub category/Cleaning Essentials/Fresheners.webp" alt="Amul Gold Full Cream Fresh Milk" width="140" height="140" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                            </div>
+                        </div>
+                    <div class="">
+                        <div style="height: 25px;" class="product_update">
+                            <div style="width: 70px; border-radius: 4px; border-width: 0px; padding: 0px 4px; background-color: rgb(248, 248, 248); display: flex; justify-content:start; align-items:start; height: 100%;">
+                                <div class="h-100" style=" align-items: center; display: flex;">
+                                    <div style="width: 15px; height: 100%;">
+                                        <div style="width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden;">
+                                            <img class="h-75" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" style="width: 100%; transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; opacity: 1; height: 100%;">
+                                        </div>
+                                    </div>
+                                    <div style="text-transform: uppercase; font-weight: 700; font-size: 9px; color: rgb(54, 54, 54);" class="mt-1 ms-2">30 mins</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="title mb-0 ms-1 mt-1 w-100">
+                            <h6 style="font-size: 14px;" >Odonil Room Freshener</h6>
+                        </div>
+                            <div class="h-25" style="align-items: center; display: flex; width: 100%;">
+                                <span class="ms-1 text-body-secondary mt-2" style="font-size: 13px; height: 13px;">100 ml</span>
+                            </div>
+                             <div class="price-add mt-2 d-flex justify-content-between">
+                                <span class="mt-2 ">₹150</span>
+                             <button type="button" class="btn btn-outline-success">Add</button>
+                             </div>
+                        </div>
+                    </div>
+                    <!-- card 7 -->
+                    <div class="card col-auto" style="height: 18.5rem; width: 12rem;">
+                        <div class=" mt-3">
+                            <div width="140" height="140" class="d-flex justify-content-center">
+                                <img src="./Assets/Image/sub category/Cleaning Essentials/Garbage Bags.webp" alt="Amul Gold Full Cream Fresh Milk" width="140" height="140" loading="lazy" style="border-radius: 0px; object-fit: fill; cursor: default;">
+                            </div>
+                        </div>
+                    <div class="">
+                        <div style="height: 25px;" class="product_update">
+                            <div style="width: 70px; border-radius: 4px; border-width: 0px; padding: 0px 4px; background-color: rgb(248, 248, 248); display: flex; justify-content:start; align-items:start; height: 100%;">
+                                <div class="h-100" style=" align-items: center; display: flex;">
+                                    <div style="width: 15px; height: 100%;">
+                                        <div style="width: 100%; height: 100%; aspect-ratio: 1 / 1; overflow: hidden;">
+                                            <img class="h-75" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/eta-icons/15-mins.png" style="width: 100%; transition-property: opacity; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 0.15s; opacity: 1; height: 100%;">
+                                        </div>
+                                    </div>
+                                    <div style="text-transform: uppercase; font-weight: 700; font-size: 9px; color: rgb(54, 54, 54);" class="mt-1 ms-2">30 mins</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="title mb-0 ms-1 mt-1 w-100">
+                            <h6 style="font-size: 14px;" >Garbage Bags Pack of 10</h6>
+                        </div>
+                            <div class="h-25" style="align-items: center; display: flex; width: 100%;">
+                                <span class="ms-1 text-body-secondary mt-2" style="font-size: 13px; height: 13px;">20 Piece</span>
+                            </div>
+                             <div class="price-add mt-2 d-flex justify-content-between">
+                                <span class="mt-2">₹20</span>
+                             <button type="button" class="btn btn-outline-success">Add</button>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </section>
+          <footer class="w-100 mt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="left col-4">
+                        <h5>Useful Links</h5>
+                    </div>
+                    <div class="col-6">
+                        <h5 class="d-inline">Categories</h5><span class="fs-6 ms-2 text-success pb-2">see all</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-1">
+                        <ul class="mt-3 list-unstyled">
+                            <li class="text-body-secondary mt-1">About</li>
+                            <li class="text-body-secondary mt-1">Careers</li>
+                            <li class="text-body-secondary mt-1">Blog</li>
+                            <li class="text-body-secondary mt-1">Press</li>
+                            <li class="text-body-secondary mt-1">Lead</li>
+                            <li class="text-body-secondary mt-1">Value</li>
+                            
+                        </ul>
+                    </div>
+                    <div class="col-1 ms-5">
+                        <ul class="mt-3 list-unstyled">
+                            <li class="text-body-secondary mt-1">Privacy</li>
+                            <li class="text-body-secondary mt-1">Terms</li>
+                            <li class="text-body-secondary mt-1">FAQ<sub>s</sub></li>
+                            <li class="text-body-secondary mt-1">Security</li>
+                            <li class="text-body-secondary mt-1">Mobile</li>
+                            <li class="text-body-secondary mt-1">Contact</li>
+                        </ul>
+                    </div>
+                    <div class="col-1 ms-5">
+                        <ul class="mt-3 list-unstyled">
+                            <li class="text-body-secondary mt-1">Parter</li>
+                            <li class="text-body-secondary mt-1">Frenchise</li>
+                            <li class="text-body-secondary mt-1">Seller</li>
+                            <li class="text-body-secondary mt-1">Warehouse</li>
+                            <li class="text-body-secondary mt-1">Deliver</li>
+                            <li class="text-body-secondary mt-1">Resources</li>
+                        </ul>
+                    </div>
+                    <div class="col-2 ms-4">
+                        <ul class="mt-3 list-unstyled">
+                            <li class="text-body-secondary mt-1">Vegetables & Fruits</li>
+                            <li class="text-body-secondary mt-1">Cold Drinks & Juices</li>
+                            <li class="text-body-secondary mt-1">BAkery & Biscuits</li>
+                            <li class="text-body-secondary mt-1">Dry Fruit</li>
+                            <li class="text-body-secondary mt-1">Paan Corner</li>
+                            <li class="text-body-secondary mt-1">Pharma & Wellness</li>
+                            <li class="text-body-secondary mt-1">Beauty & Cosmetics</li>
+                            <li class="text-body-secondary mt-1">Print Store</li>
+                        </ul>
+                    </div>
+                    <div class="col-2 ms-5 ps-5">
+                        <ul class="mt-3 list-unstyled">
+                            <li class="text-body-secondary mt-1">Dairy & Breakfast</li>
+                            <li class="text-body-secondary mt-1">Instant & Frozen Food</li>
+                            <li class="text-body-secondary mt-1">Sweet Tooth</li>
+                            <li class="text-body-secondary mt-1">Sauces & Spreads</li>
+                            <li class="text-body-secondary mt-1">Organic & Premium</li>
+                            <li class="text-body-secondary mt-1">Cleaning Essential</li>
+                            <li class="text-body-secondary mt-1">Personal Cal</li>
+                            <li class="text-body-secondary mt-1">Fashion & Accessories</li>
+                            <li class="text-body-secondary mt-1">Books</li>
+                        </ul>
+                    </div>
+                    <div class="col-2 ms-5 ps-5">
+                        <ul class="mt-3 list-unstyled">
+                            <li class="text-body-secondary mt-1">Munchiest</li>
+                            <li class="text-body-secondary mt-1">Tea,Coffee & Health Drnks<li>
+                            <li class="text-body-secondary mt-1">Atta, Rice & Dal</li>
+                            <li class="text-body-secondary mt-1">Chicken,Meat & Fish</li>
+                            <li class="text-body-secondary mt-1">Baby Care</li>
+                            <li class="text-body-secondary mt-1">Home & Office</li>
+                            <li class="text-body-secondary mt-1">Pet Care</li>
+                            <li class="text-body-secondary mt-1">Electronics & Electricals</li>
+                            <li class="text-body-secondary mt-1">Toys & Games</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+          </footer>
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+</body>
+</html>
